@@ -6,8 +6,10 @@ import java.util.List;
 
 public interface ICategoryService {
     Category addCategory(Category categ);
-    void deleteCategory(String categName);
+    void deleteCategory(Long ref);
     List<Category> getAllCategories();
+    Category getCategory(Long ref);
     List<Category> searchCategoriesByKeyword(String key);
     Category updateCategory(Long ref,Category newCateg);
+
 }

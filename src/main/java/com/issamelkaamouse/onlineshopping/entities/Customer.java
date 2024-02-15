@@ -28,6 +28,6 @@ public class Customer extends Visitor{
     @OneToOne
     @JoinColumn(name = "cart_id", unique = true)
     private Cart cart;
-    @OneToMany(mappedBy = "customer")
-    private List<Order> orders;
+//    @OneToMany(mappedBy = "customer")
+//    private List<Order> orders;
 }

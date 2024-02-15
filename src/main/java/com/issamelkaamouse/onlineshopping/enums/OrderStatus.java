@@ -1,5 +1,5 @@
 package com.issamelkaamouse.onlineshopping.enums;
 
-public enum orderStatus {
+public enum OrderStatus {
     PENDING, DELIVERED, UNCONFIRMED
 }

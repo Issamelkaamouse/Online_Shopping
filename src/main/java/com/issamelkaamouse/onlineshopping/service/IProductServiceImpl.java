@@ -2,6 +2,7 @@ package com.issamelkaamouse.onlineshopping.service;
 
 import com.issamelkaamouse.onlineshopping.entities.Category;
 import com.issamelkaamouse.onlineshopping.entities.Product;
+import com.issamelkaamouse.onlineshopping.repositories.CategoryRepository;
 import com.issamelkaamouse.onlineshopping.repositories.ProductRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -14,29 +15,47 @@ import java.util.List;
 @AllArgsConstructor
 public class IProductServiceImpl implements IProductService {
     private ProductRepository productRepository;
+    private CategoryRepository categoryRepository;
 
     @Override
     public Product addProduct(Product p) {
-        return null;
+        productRepository.save(p);
+        return p;
     }
 
     @Override
-    public void deleteProduct(String productName) {
-
+    public void deleteProduct(Long ref) {
+        productRepository.delete(productRepository.findByRef(ref));
     }
 
     @Override
     public List<Product> getAllProducts() {
-        return null;
+        return productRepository.findAll();
+    }
+
+    @Override
+    public Product getProduct(Long ref) {
+        return productRepository.findByRef(ref);
     }
 
     @Override
     public List<Product> searchProductsByKeyword(String key) {
-        return null;
+        return productRepository.findProductByDesignationContains(key);
     }
 
     @Override
     public Product updateProduct(Long ref, Product newProduct) {
-        return null;
+        Product existingProduct = productRepository.findByRef(ref);
+        existingProduct.setDescription(newProduct.getDescription());
+        existingProduct.setDesignation(newProduct.getDesignation());
+        existingProduct.setPrice(newProduct.getPrice());
+        return productRepository.save(existingProduct);
+    }
+
+    @Override
+    public Product affectProductToCategory(Long productRef, String categName) {
+        Product p = productRepository.findByRef(productRef);
+        p.setCategory(categoryRepository.findByName(categName));
+        return p;
     }
 }

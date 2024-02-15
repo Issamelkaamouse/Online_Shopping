@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<Category,Long> {
     Category findByRef(Long ref);
-    void deleteByName(String categName);
+    Category findByName(String categName);
     List<Category> findCategoryByNameContains(String keyword);
 
 }

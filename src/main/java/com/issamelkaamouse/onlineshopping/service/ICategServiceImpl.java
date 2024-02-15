@@ -17,25 +17,27 @@ public class ICategServiceImpl implements ICategoryService {
     private CategoryRepository categoryRepository;
     @Override
     public Category addCategory(Category categ) {
-        categoryRepository.save(categ);
-        return categ;
+        return categoryRepository.save(categ);
     }
 
     @Override
-    public void deleteCategory(String categName) {
-        categoryRepository.deleteByName(categName);
+    public void deleteCategory(Long ref) {
+        categoryRepository.delete(categoryRepository.findByRef(ref));
     }
 
     @Override
     public List<Category> getAllCategories() {
-        List<Category> categories = categoryRepository.findAll();
-        return categories;
+        return categoryRepository.findAll();
+    }
+
+    @Override
+    public Category getCategory(Long ref) {
+        return categoryRepository.findByRef(ref);
     }
 
     @Override
     public List<Category> searchCategoriesByKeyword(String key) {
-        List<Category> fetchedCategories = categoryRepository.findCategoryByNameContains(key);
-        return fetchedCategories;
+        return categoryRepository.findCategoryByNameContains(key);
     }
 
     @Override

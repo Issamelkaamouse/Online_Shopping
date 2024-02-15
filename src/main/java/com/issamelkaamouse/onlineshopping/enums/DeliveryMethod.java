@@ -1,5 +1,6 @@
 package com.issamelkaamouse.onlineshopping.enums;
 
-public enum deliveryMethod {
+
+public enum DeliveryMethod {
    STANDARD, BY_POSTAL
 }
