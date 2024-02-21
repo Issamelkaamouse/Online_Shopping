@@ -20,7 +20,8 @@ public class IOrderServiceImpl implements IOrderService {
     private OrderDetailsRepository orderDetailsRepository;
 
     @Override
-    public Order createOrder(Order order) {
+    public Order createOrder(Order order,OrderDetails orderDetails) {
+        orderDetailsRepository.save(orderDetails);
         return orderRepository.save(order);
     }
 
@@ -34,17 +35,24 @@ public class IOrderServiceImpl implements IOrderService {
         return orderRepository.findAll();
     }
 
-    @Override
-    public Order getOrder(Long id) {
-        return orderRepository.findByOrderId(id);
-    }
+
 
     @Override
-    public void updateOrderStatus(Long id,OrderStatus newStatus) {
+    public Order updateOrderStatus(Long id,OrderStatus newStatus) {
         Order o = orderRepository.findByOrderId(id);
         o.setStatus(newStatus);
         orderRepository.save(o);
+        return o;
     }
 
+    @Override
+    public OrderDetails updatePaymentStatus(Long id, PaymentStatus newStatus) {
+        OrderDetails orderDetails = orderDetailsRepository.findOrderDetailsById(id);
+//        Order order = orderRepository.findByOrderId(id);
+//        OrderDetails orderDetails = order.getOrderDetails();
+        orderDetails.setPaymentStatus(newStatus);
+//        orderDetails.setOrder(order);
 
+        return  orderDetailsRepository.save(orderDetails);
+    }
 }

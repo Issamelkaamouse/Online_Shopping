@@ -1,24 +1,14 @@
 package com.issamelkaamouse.onlineshopping;
 
-import com.issamelkaamouse.onlineshopping.entities.Category;
 import com.issamelkaamouse.onlineshopping.entities.Order;
 import com.issamelkaamouse.onlineshopping.entities.OrderDetails;
-import com.issamelkaamouse.onlineshopping.entities.Product;
-import com.issamelkaamouse.onlineshopping.enums.DeliveryMethod;
 import com.issamelkaamouse.onlineshopping.enums.OrderStatus;
-import com.issamelkaamouse.onlineshopping.enums.PaymentMethod;
 import com.issamelkaamouse.onlineshopping.enums.PaymentStatus;
-import com.issamelkaamouse.onlineshopping.service.ICategServiceImpl;
-import com.issamelkaamouse.onlineshopping.service.IOrderDetailsImpl;
-import com.issamelkaamouse.onlineshopping.service.IOrderServiceImpl;
-import com.issamelkaamouse.onlineshopping.service.IProductServiceImpl;
+import com.issamelkaamouse.onlineshopping.service.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import java.util.Date;
-import java.util.stream.Stream;
 
 @SpringBootApplication()
 public class OnlineShoppingApplication {
@@ -27,15 +17,42 @@ public class OnlineShoppingApplication {
     }
 
     @Bean
-    CommandLineRunner start(IProductServiceImpl productService, ICategServiceImpl categoryService, IOrderServiceImpl iOrderService, IOrderDetailsImpl iOrderDetails) {
+    CommandLineRunner start(IProductServiceImpl productService, ICategServiceImpl categoryService, IOrderServiceImpl iOrderService, IFeedbackServiceImpl iFeedbackService) {
         return args -> {
+//
+//            Stream.of("bad product how it work's","feedback 1 ", "feedback 2").forEach(f->{
+//                Feedback feedback = new Feedback();
+//                feedback.setFeedbackMsg(f);
+//                iFeedbackService.addFeedback(feedback);
+//            });
 
-//                Order o = new Order();
-//                o.setStatus(OrderStatus.PENDING);
-//                o.setTotalAmount(39500.0);
-//                OrderDetails orderDetails =  new OrderDetails();
-//                o.setOrderDetails(iOrderDetails.createOrderDetails(orderDetails));
-//                iOrderService.createOrder(o);
+
+//            Stream.of(1,2,3,4,5).forEach(i->{
+//                CartItem cartItem = new CartItem();
+//                cartItem.setQuantity(i);
+//                cartItemRepository.save(cartItem);
+//            });
+
+//            cartService.addProductToCart("9abd58e2-f550-4906-818c-b288a6c70298",cartItem);
+
+//            Stream.of(2.0,3.0,4.0,5.0).forEach(i->{
+//                Cart c = new Cart();
+//                c.setTotalAmount(i);
+//                Visitor visitor = new Visitor();
+//                visitor.setSessionId(i+" -->  session id");
+//                visitorRepository.save(visitor);
+//                c.setVisitor(visitor);
+//                cartService.createCart(c);
+//            });
+
+//            Order order = new Order();
+//            order.setStatus(OrderStatus.PENDING);
+//            order.setTotalAmount(39500.0);
+//            OrderDetails oD = new OrderDetails();
+//            oD.setPaymentStatus(PaymentStatus.UNPAID);
+//            oD.setOrder(order);
+//            order.setOrderDetails(oD);
+//            iOrderService.createOrder(order,oD);
 //            System.out.println(o.getOrderDetails().getId());
 //            iOrderService.createOrder(o);
 //            iOrderService.createOrder(o1);

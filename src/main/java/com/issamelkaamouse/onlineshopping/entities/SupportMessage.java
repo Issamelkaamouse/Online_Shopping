@@ -1,5 +1,6 @@
 package com.issamelkaamouse.onlineshopping.entities;
 
+import com.issamelkaamouse.onlineshopping.utils.Visitor;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +15,7 @@ public class SupportMessage {
     private Long messageId;
     private String message;
     private Date sentAt;
-    @ManyToOne
-    @JoinColumn(name = "visitor_id")
-    private Visitor visitor;
+//    @ManyToOne
+//    @JoinColumn(name = "visitor_id")
+//    private Visitor visitor;
 }

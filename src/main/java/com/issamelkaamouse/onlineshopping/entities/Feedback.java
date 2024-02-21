@@ -18,7 +18,7 @@ public class Feedback {
     private String feedbackMsg;
 
     @Column(columnDefinition = "TIMESTAMP")
-    private Date feedbackDate;
+    private Date createdAt = new Date();
 
     @ManyToOne
     @JoinColumn(name = "customer_id")

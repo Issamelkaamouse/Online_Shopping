@@ -31,7 +31,7 @@ public class ProductController {
 
     @PutMapping("/{ref}")
     public ResponseEntity<Product> updateProduct(@PathVariable("ref") Long ref,@RequestBody Product newProduct){
-        return new ResponseEntity<>(iProductService.updateProduct(ref,newProduct),HttpStatus.OK);
+        return ResponseEntity.ok(iProductService.updateProduct(ref,newProduct));
     }
 
     @GetMapping("/search/{key}")

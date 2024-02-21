@@ -1,5 +1,6 @@
 package com.issamelkaamouse.onlineshopping.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.issamelkaamouse.onlineshopping.enums.DeliveryMethod;
 import com.issamelkaamouse.onlineshopping.enums.OrderStatus;
@@ -22,8 +23,9 @@ public class Order {
     private Long orderId;
     private Date createdAt = new Date();
     private Double totalAmount;
-    private OrderStatus status;
+    private OrderStatus status = OrderStatus.PENDING;
     @OneToOne
-    @JoinColumn(name = "orderDetail_id", unique = true)
+    @JsonManagedReference
+    @JoinColumn(name = "order_details_id", unique = true)
     private OrderDetails orderDetails;
 }
